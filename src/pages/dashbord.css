@@ -1,0 +1,64 @@
+/* dashboard.css */
+
+.dashboard-container {
+  max-width: 500px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: #111;
+  color: #d4f0ff;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-container h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #6af1ff, #ff3d3d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashboard-container p {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+.dashboard-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.chat-link, .logout-btn {
+  text-decoration: none;
+  font-size: 15px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.chat-link {
+  background: linear-gradient(to right, #ff3d3d, #6af1ff);
+  color: white;
+  text-align: center;
+  border: none;
+}
+
+.chat-link:hover {
+  background: linear-gradient(to right, #ff6f6f, #b0faff);
+}
+
+.logout-btn {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: #d4f0ff;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #1a1a1a;
+  border-color: #555;
+}

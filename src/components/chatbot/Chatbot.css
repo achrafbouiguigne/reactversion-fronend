@@ -1,0 +1,145 @@
+/* Base Reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0a;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #d4f0ff;
+  height: 100vh;
+  display: flex;
+}
+
+/* Main Container */
+.chatbot-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  background-color: #0a0a0a;
+  overflow: hidden;
+}
+
+/* Messages Area */
+.chatbot-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual Message */
+.message {
+  max-width: 60%;
+  margin: 10px 0;
+  padding: 15px 20px;
+  border-radius: 12px;
+  white-space: pre-wrap;
+  font-size: 15px;
+  border: 1px solid transparent;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: #141d24;
+  border-color: #273a49;
+  color: #7bdfff;
+}
+
+.message.bot {
+  align-self: flex-start;
+  background-color: #171717;
+  border-color: #2b2b2b;
+  color: #6ae0ff;
+}
+
+/* Message Timestamp */
+.message-timestamp {
+  font-size: 11px;
+  color: #666;
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* Bot Context (Sources) */
+.message-context {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.message-context details summary {
+  cursor: pointer;
+  color: #6af1ff;
+}
+
+.message-context ul {
+  padding-left: 18px;
+  margin: 5px 0 0;
+}
+
+/* Input Area */
+.chatbot-input {
+  display: flex;
+  border: 1px solid #222;
+  background-color: #111;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 15px;
+  background-color: #111;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.chatbot-input input::placeholder {
+  color: #777;
+}
+
+.chatbot-input button {
+  padding: 0 20px;
+  background: linear-gradient(to right, #ff3c3c, #6af1ff);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.chatbot-input button:hover {
+  background: linear-gradient(to right, #ff6f6f, #b0faff);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chatbot-container {
+    padding: 20px;
+  }
+
+  .message {
+    max-width: 90%;
+  }
+
+  .chatbot-input {
+    flex-direction: column;
+  }
+
+  .chatbot-input input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .chatbot-input button {
+    width: 100%;
+  }
+}
