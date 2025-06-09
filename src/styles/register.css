@@ -1,75 +1,97 @@
+/* Autofill Fix */
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #1a1a1a inset !important;
+  -webkit-text-fill-color: #fff !important;
+  border: 1px solid #333 !important;
+}
+
+/* Full page layout */
 body {
+  background-color: #0d0d0d;
+  margin: 0;
+  font-family: 'Courier New', monospace;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  background-color: #1a1a1a; /* Optional: matching dark background */
-}
-
-
-
-.auth-container {
-  max-width: 400px;
-  width: 100%;
-  padding: 40px;
-  justify-content: center;
-  background-color: #111;
-  border: 1px solid #222;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  height: 100vh;
   color: #d4f0ff;
 }
 
-
-.auth-title {
-  text-align: center;
-  justify-content: center;
-  font-size: 26px;
-  margin-bottom: 20px;
-  color: #6af1ff;
-}
-
-
-.auth-form {
+/* Auth box */
+.auth-container {
+  max-width: 400px;
+  width: 90%;
+  padding: 40px;
+  background-color: #111;
+  border: 1px solid #222;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(106, 241, 255, 0.1);
   display: flex;
-
   flex-direction: column;
-  gap: 45px;
+  align-items: center;
+  gap: 25px;
+  margin-top: 40px;
 }
 
+/* Title */
+.auth-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #6af1ff;
+  margin-bottom: 10px;
+}
 
+/* Form */
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input fields */
 input {
-  padding: 20px;
+  padding: 16px;
   border: 1px solid #333;
-  border-radius: 8px;
-  background-color: #1a1a1a;
+  border-radius: 10px;
+  background-color: #1a1a1a;margin-bottom: 10px;
   color: #fff;
-  font-size: 14px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
   outline: none;
+  transition: border 0.3s ease;
+}
+
+input:focus {
+  border-color: #6af1ff;
 }
 
 input::placeholder {
   color: #777;
 }
 
+/* Button */
 button {
-  padding: 12px;
+  padding: 14px;
+  width: 100%;
   background: linear-gradient(to right, #ff3c3c, #6af1ff);
   border: none;
-  justify-content: center;
-  border-radius: 8px;
+  border-radius: 10px;
   color: white;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: transform 0.2s ease, background 0.3s ease;
+  margin-top: 10px;
 }
 
 button:hover {
+  transform: scale(1.02);
   background: linear-gradient(to right, #ff6f6f, #b0faff);
 }
 
-
+/* Error Message */
 .error-message {
   color: #ff4d4d;
   font-size: 14px;

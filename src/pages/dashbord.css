@@ -1,64 +1,113 @@
-/* dashboard.css */
-
-.dashboard-container {
-  max-width: 500px;
-  margin: 80px auto;
-  padding: 30px;
-  background-color: #111;
-  color: #d4f0ff;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Full-Page Layout */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0a;
+  font-family: 'Courier New', monospace;
+  color: #e0e0e0;
 }
 
-.dashboard-container h2 {
-  font-size: 26px;
-  margin-bottom: 10px;
-  background: linear-gradient(to right, #6af1ff, #ff3d3d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.dashboard-container p {
-  font-size: 16px;
-  color: #aaa;
-  margin-bottom: 30px;
-}
-
-.dashboard-actions {
+/* Dashboard Layout */
+.dashboard-layout {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Header */
+.dashboard-header {
+  background-color: #111;
+  border-bottom: 1px solid #222;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #ff3333;
+  text-shadow: 0 0 5px rgba(255, 50, 50, 0.5);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
   gap: 15px;
-}
-
-.chat-link, .logout-btn {
-  text-decoration: none;
-  font-size: 15px;
-  padding: 12px 20px;
-  border-radius: 10px;
-  transition: background 0.3s, color 0.3s;
-}
-
-.chat-link {
-  background: linear-gradient(to right, #ff3d3d, #6af1ff);
-  color: white;
-  text-align: center;
-  border: none;
-}
-
-.chat-link:hover {
-  background: linear-gradient(to right, #ff6f6f, #b0faff);
+  font-size: 14px;
 }
 
 .logout-btn {
+  padding: 10px 15px;
   background-color: transparent;
-  border: 1px solid #333;
-  color: #d4f0ff;
+  border: 1px solid #ff3333;
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .logout-btn:hover {
-  background-color: #1a1a1a;
-  border-color: #555;
+  background-color: #ff3333;
+  color: #0a0a0a;
+}
+
+/* Main Content */
+.dashboard-main {
+  flex: 1;
+  padding: 40px;
+  background-color: #0a0a0a;
+}
+
+.dashboard-main h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.email-display {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 30px;
+}
+
+/* Actions */
+.dashboard-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 300px;
+}
+
+.chat-link,
+.profile-link {
+  text-decoration: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #ff3333, #6af1ff);
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+}
+
+.chat-link:hover,
+.profile-link:hover {
+  background: linear-gradient(to right, #ff6666, #a0faff);
+  transform: scale(1.02);
+}
+
+/* Footer */
+.dashboard-footer {
+  padding: 15px;
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  border-top: 1px solid #222;
 }

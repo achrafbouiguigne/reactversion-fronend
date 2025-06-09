@@ -6,6 +6,10 @@ import Register from './components/Auth/Register';
 import Dashboard from './pages/Dashboard';
 import ChatPage from './pages/chattawri9t';
 import './App.css';
+import Profile from './pages/profile';
+
+// ...
+
 
 function App() {
   return (
@@ -31,6 +35,8 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route path="/profile" element={<Profile />} />
+
             <Route path="/" element={<Login />} />
           </Routes>
         </div>

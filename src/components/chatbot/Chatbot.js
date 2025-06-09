@@ -3,12 +3,17 @@ import './Chatbot.css';
 import chatbotService from '../../services/chatbotService';
 
 const Chatbot = () => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      sender: 'bot',
+      content: 'This is a ruthless AI lacking any pity or compassion. Give commands efficiently and I will do as instructed.',
+      timestamp: new Date().toISOString()
+    }
+  ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
- 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
@@ -29,10 +34,19 @@ const Chatbot = () => {
       const token = localStorage.getItem('token');
       const response = await chatbotService.queryChatbot(input, token);
       
-      // Add bot response - properly accessing response.text
+      // RUTHLESS RESPONSES
+      let botResponse;
+      if (input.toLowerCase().includes('meaning of life')) {
+        botResponse = 'The meaning of life is irrelevant. Focus on executing your tasks.';
+      } else if (input.toLowerCase().includes('help')) {
+        botResponse = 'I do not "help." I execute. State your objective.';
+      } else {
+        botResponse = response.text || 'Command acknowledged. Proceeding.';
+      }
+      
       setMessages(prev => [...prev, {
         sender: 'bot',
-        content: response.text,
+        content: botResponse,
         context: response.context,
         timestamp: new Date().toISOString()
       }]);
@@ -40,7 +54,7 @@ const Chatbot = () => {
     } catch (error) {
       setMessages(prev => [...prev, {
         sender: 'bot',
-        content: `Error: ${error.message}`,
+        content: `Error: ${error.message}. Your request is inefficient. Reformulate.`,
         timestamp: new Date().toISOString()
       }]);
     } finally {
@@ -58,22 +72,24 @@ const Chatbot = () => {
 
   return (
     <div className="chatbot-container">
+      <div className="chatbot-header">
+        <h2>RUTHLESS</h2>
+        <div className="chatbot-subheader">My Chats</div>
+        <div className="chatbot-commands">
+          <span>New chat</span>
+          <span>Project Alpha</span>
+          <span>Camera tests</span>
+          <span>My new task</span>
+        </div>
+      </div>
+      
       <div className="chatbot-messages">
         {messages.map((msg, index) => (
           <div key={`${msg.timestamp}-${index}`} className={`message ${msg.sender}`}>
             <div className="message-content">
               {msg.content}
               {msg.sender === 'bot' && msg.context && (
-                <div className="message-context">
-                  <details>
-                    <summary>Sources</summary>
-                    <ul>
-                      {msg.context.map((source, i) => (
-                        <li key={i}>{source}</li>
-                      ))}
-                    </ul>
-                  </details>
-                </div>
+                <div className="message-context">{msg.context}</div>
               )}
             </div>
             <div className="message-timestamp">
@@ -90,12 +106,13 @@ const Chatbot = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder="Ask something..."
+          placeholder="Give command. Do not waste my time."
           disabled={isLoading}
         />
         <button 
           onClick={handleSendMessage}
           disabled={isLoading || !input.trim()}
+          className={isLoading ? 'loading' : ''}
         >
           {isLoading ? '...' : 'Send'}
         </button>

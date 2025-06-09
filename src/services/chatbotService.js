@@ -29,6 +29,10 @@ const queryChatbot = async (query, token) => {
   }
 };
 
-export default {
+// Assign the object to a named variable first
+const chatbotService = {
   queryChatbot
 };
+
+// Then export the named variable as default
+export default chatbotService;
